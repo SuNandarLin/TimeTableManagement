@@ -1,0 +1,107 @@
+Create table Login(
+loginName varchar(15),
+loginPassword varchar(10)
+);
+Insert into Login values('Aye Aye','ayeaye');
+Insert into Login values('Tun Tun','tuntun');
+
+Create table Teacher(
+teacherNo int auto_increment primary key,
+teacherName varchar(15)
+);
+Create table Course(
+courseNo int auto_increment primary key,
+CourseName varchar(20)
+);
+Create table Room(
+roomNo int auto_increment primary key,
+roomName varchar(10)
+);
+Create table time(
+timeId int primary key,
+day varchar(5),
+time int
+);
+Create table semester(
+semName varchar(30) primary key
+);
+Create table timetable(
+semNo int,
+semName varchar(30),
+timeId int,
+teacherNo int,
+courseNo int,
+roomNo int,
+foreign key (semName) references semester(semName),
+foreign key (timeId) references time(timeId),
+foreign key (teacherNo) references Teacher(teacherNo),
+foreign key (courseNo) references Course(courseNo),
+foreign key (roomNo) references Room(roomNo),
+primary key(semNo,timeId)
+);
+insert into time values(1,'Mon',8);
+insert into time values(2,'Mon',9);
+insert into time values(3,'Mon',10);
+insert into time values(4,'Mon',11);
+insert into time values(5,'Mon',12);
+insert into time values(6,'Mon',1);
+insert into time values(7,'Mon',2);
+insert into time values(8,'Mon',3);
+insert into time values(9,'Mon',4);
+insert into time values(10,'Tue',8);
+insert into time values(11,'Tue',9);
+insert into time values(12,'Tue',10);
+insert into time values(13,'Tue',11);
+insert into time values(14,'Tue',12);
+insert into time values(15,'Tue',1);
+insert into time values(16,'Tue',2);
+insert into time values(17,'Tue',3);
+insert into time values(18,'Tue',4);
+insert into time values(19,'Wed',8);
+insert into time values(20,'Wed',9);
+insert into time values(21,'Wed',10);
+insert into time values(22,'Wed',11);
+insert into time values(23,'Wed',12);
+insert into time values(24,'Wed',1);
+insert into time values(25,'Wed',2);
+insert into time values(26,'Wed',3);
+insert into time values(27,'Wed',4);
+insert into time values(28,'Thur',8);
+insert into time values(29,'Thur',9);
+insert into time values(30,'Thur',10);
+insert into time values(31,'Thur',11);
+insert into time values(32,'Thur',12);
+insert into time values(33,'Thur',1);
+insert into time values(34,'Thur',2);
+insert into time values(35,'Thur',3);
+insert into time values(36,'Thur',4);
+insert into time values(37,'Fri',8);
+insert into time values(38,'Fri',9);
+insert into time values(39,'Fri',10);
+insert into time values(40,'Fri',11);
+insert into time values(41,'Fri',12);
+insert into time values(42,'Fri',1);
+insert into time values(43,'Fri',2);
+insert into time values(44,'Fri',3);
+insert into time values(45,'Fri',4);
+
+insert into semester values("First year First Semester");
+insert into semester values("First year Second Semester");
+
+insert into semester values("Second year First Semester");
+insert into semester values("Second year Second Semester");
+
+insert into semester values("Third year First Semester");
+insert into semester values("Third year Second Semester");
+
+insert into semester values("Fourth year First Semester");
+insert into semester values("Fourth year Second Semester");
+
+insert into semester values("Fifth year First Semester");
+insert into semester values("Fifth year Second Semester");
+
+insert into semester values("Final year First Semester");
+insert into semester values("Final year Second Semester");
+
+Select t.teacherName from teacher t,timetable tt 
+ where tt.timeId=35 and tt.semName='%Second Semester' and t.teacherNo=tt.teacherNo;
